@@ -12,10 +12,10 @@ contract lives in
 
 1. Create a RevenueCat project, set up an Offering, and grab the
    **public SDK** key for each platform.
-2. Replace `rcat_placeholder_*` in `.config.<flavor>.json` with the
-   real key in the `REVENUECAT_API_KEY` field. (For per-platform
-   keys, follow the source project's `_ANDROID` / `_IOS` split — the
-   template ships a single key field for simplicity.)
+2. Replace `rcat_placeholder_*` in `.config.<flavor>.json` with:
+   `REVENUECAT_API_KEY_TEST` for dev builds,
+   `REVENUECAT_API_KEY_ANDROID` for Android non-dev builds, and
+   `REVENUECAT_API_KEY_IOS` for iOS non-dev builds.
 3. Set `ENABLE_REVENUECAT=true` in `.config.<flavor>.json`.
 4. Rebuild the app.
 

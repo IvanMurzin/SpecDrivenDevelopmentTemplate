@@ -37,7 +37,7 @@ warning so the misconfiguration is visible.
 ## Supabase
 
 - Required. The app refuses to start without `SUPABASE_URL` and
-  `SUPABASE_ANON_KEY` set in `.config.<flavor>.json`.
+  `SUPABASE_PUBLISHABLE_KEY` set in `.config.<flavor>.json`.
 - One backend per project; `dev` and `prod` flavors point at the same
   project. Use Supabase Auth to scope test data, not separate
   backends.

@@ -4,17 +4,17 @@ Two kinds of keys:
 
 | Key | Where it lives | Who uses it |
 | --- | -------------- | ----------- |
-| **Anon** (`SUPABASE_ANON_KEY`) | `.config.<flavor>.json` | Flutter client. |
+| **Publishable** (`SUPABASE_PUBLISHABLE_KEY`) | `.config.<flavor>.json` | Flutter client. |
 | **Service role** (`SUPABASE_SERVICE_ROLE_KEY`) | Supabase secret | Edge Function only. |
 
-## Anon
+## Publishable
 
 Public. Safe to ship in the client bundle. Set in:
 
 ```json
 {
   "SUPABASE_URL": "https://<project-ref>.supabase.co",
-  "SUPABASE_ANON_KEY": "ey..."
+  "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_..."
 }
 ```
 

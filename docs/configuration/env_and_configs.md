@@ -17,12 +17,14 @@ Two layers:
 | `ENV`                 | string | —           | yes      | `"dev"` / `"prod"` — labels logs. |
 | `FLAVOR`              | string | —           | yes      | Must match the build flavor. |
 | `SUPABASE_URL`        | string | —           | yes      | Project URL from Supabase. |
-| `SUPABASE_ANON_KEY`   | string | —           | yes      | Public anon key. |
+| `SUPABASE_PUBLISHABLE_KEY` | string | —      | yes      | Public publishable key. |
 | `OAUTH_REDIRECT_URI`  | string | `""`        | no       | Deep-link URL for Google / Apple sign-in (e.g. `myapp://login-callback/`). Empty disables social sign-in — `IAuthRepository.getAvailableProviders()` returns `[email]` only. |
 | `IS_OTP_ENABLED`      | bool   | `false`     | no       | When true, sign-up requires email OTP verification. When false, the user is signed in immediately after sign-up. |
 | `ENABLE_FIREBASE`     | bool   | `false`     | no       | Set true after adding `google-services.json` / `GoogleService-Info.plist`. |
 | `ENABLE_REVENUECAT`   | bool   | `false`     | no       | Set true after adding real RevenueCat keys. |
-| `REVENUECAT_API_KEY`  | string | placeholder | no       | RevenueCat **public SDK** key. Required when `ENABLE_REVENUECAT=true`. |
+| `REVENUECAT_API_KEY_TEST` | string | placeholder | no | RevenueCat **public SDK** test key. Used by `dev` builds when `ENABLE_REVENUECAT=true`. |
+| `REVENUECAT_API_KEY_ANDROID` | string | placeholder | no | RevenueCat Android **public SDK** key. Used by Android non-dev builds when `ENABLE_REVENUECAT=true`. |
+| `REVENUECAT_API_KEY_IOS` | string | placeholder | no | RevenueCat iOS **public SDK** key. Used by iOS non-dev builds when `ENABLE_REVENUECAT=true`. |
 | `LOG_API_RESPONSES`   | bool   | `false`     | no       | Verbose API logging in dev. Avoid in `prod`. |
 
 Add a new key:

@@ -5,8 +5,8 @@ set -euo pipefail
 ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." >/dev/null 2>&1 && pwd)"
 cd "${ROOT_DIR}"
 
-echo "==> dart format client/"
-( cd client && dart format . )
+echo "==> dart format client/lib client/test"
+( cd client && dart format lib test )
 
 if command -v deno >/dev/null 2>&1; then
   echo "==> deno fmt backend/supabase/functions/"

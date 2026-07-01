@@ -5,9 +5,8 @@ import 'package:template_app/core/logger/logger.dart';
 
 /// Configures RevenueCat at app start. No-op when `ENABLE_REVENUECAT=false`.
 ///
-/// When enabled, a placeholder API key (`REVENUECAT_API_KEY` from config)
-/// is used. Replace it with a real key from RevenueCat dashboard before
-/// shipping a paid build.
+/// When enabled, a dev build uses `REVENUECAT_API_KEY_TEST`; production
+/// builds use the platform-specific Android or iOS public SDK key.
 abstract final class RevenueCatInitializer {
   static Future<void> init() async {
     final config = AppConfig.instance;
@@ -19,7 +18,8 @@ abstract final class RevenueCatInitializer {
     if (key.isEmpty || key.toLowerCase().contains('placeholder')) {
       logger.w(
         'RevenueCat enabled with a placeholder API key — purchases will not work. '
-        'Set REVENUECAT_API_KEY in .config.<flavor>.json before shipping.',
+        'Set REVENUECAT_API_KEY_TEST, REVENUECAT_API_KEY_ANDROID, and '
+        'REVENUECAT_API_KEY_IOS in .config.<flavor>.json before shipping.',
       );
     }
     if (config.flavor == AppFlavor.dev) {

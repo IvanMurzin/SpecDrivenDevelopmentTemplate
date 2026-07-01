@@ -47,7 +47,7 @@ No changes were made to the source project. `.git/` was not copied.
   (oauthRedirectUri, isOtpEnabled, termsOfUseUrl, privacyPolicyUrl,
   multi-platform RevenueCat key resolution) with two feature flags:
   `ENABLE_FIREBASE`, `ENABLE_REVENUECAT`. Required keys reduced to
-  `ENV`, `FLAVOR`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`.
+  `ENV`, `FLAVOR`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`.
 - `client/lib/core/firebase/firebase_initializer.dart` — gated on
   `enableFirebase` flag (was tied to `flavor == prod`); skeleton
   passes `flutter analyze` without `google-services.json`.
@@ -186,7 +186,7 @@ No changes were made to the source project. `.git/` was not copied.
 2. Run `./scripts/bootstrap.sh --app-name "..." --app-id com.acme.foo`.
 3. Add Firebase config files; flip `ENABLE_FIREBASE=true`.
 4. Add real RevenueCat keys; flip `ENABLE_REVENUECAT=true`.
-5. Fill `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+5. Fill `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`.
 6. Replace placeholder app icons / native splash.
 7. Configure Android signing (`client/android/key.properties`).
 8. Configure iOS signing & capabilities in Xcode.

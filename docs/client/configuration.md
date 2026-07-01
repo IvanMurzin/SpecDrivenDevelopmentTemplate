@@ -15,7 +15,7 @@ file is the developer view.
 ```
 
 - Required keys (must be set or app won't boot): `ENV`, `FLAVOR`,
-  `SUPABASE_URL`, `SUPABASE_ANON_KEY`.
+  `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`.
 - Feature flags: `ENABLE_FIREBASE`, `ENABLE_REVENUECAT`,
   `LOG_API_RESPONSES`. Defaults are `false` so the template runs
   without any external account.

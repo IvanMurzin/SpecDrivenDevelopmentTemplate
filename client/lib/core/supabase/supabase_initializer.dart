@@ -7,7 +7,7 @@ abstract final class SupabaseInitializer {
     final debug = config.env.toLowerCase() == 'dev';
     return Supabase.initialize(
       url: config.supabaseUrl,
-      anonKey: config.supabaseAnonKey,
+      publishableKey: config.supabasePublishableKey,
       debug: debug,
     );
   }

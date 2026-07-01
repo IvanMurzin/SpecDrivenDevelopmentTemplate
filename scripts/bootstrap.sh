@@ -167,7 +167,7 @@ Bootstrap complete. Manual steps before first build:
       ENABLE_FIREBASE=true in both .config.*.json.
   [ ] Replace rcat_placeholder_* keys with real RevenueCat keys, then
       set ENABLE_REVENUECAT=true.
-  [ ] Fill SUPABASE_URL and SUPABASE_ANON_KEY in .config.*.json.
+  [ ] Fill SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY in .config.*.json.
   [ ] Replace placeholder app icons and splash screen.
   [ ] Configure Android signing (client/android/key.properties).
   [ ] Configure iOS signing & capabilities in Xcode.

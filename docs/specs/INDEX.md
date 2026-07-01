@@ -5,4 +5,4 @@ your changes will be overwritten.
 
 | ID | Title | Type | Status | Priority | Updated |
 | -- | ----- | ---- | ------ | -------- | ------- |
-| _no specs yet_ |  |  |  |  |  |
+| SPEC-0001 | refresh client config and dependencies | feature | done | P1 | 2026-07-02 |

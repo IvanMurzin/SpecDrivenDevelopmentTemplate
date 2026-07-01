@@ -128,6 +128,8 @@ fi
 # --- 12. No obvious real secrets
 SECRET_RE='(sk_[A-Za-z0-9]{20,})|(eyJ[A-Za-z0-9_-]{20,}\.eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{10,})'
 HITS="$(grep -RIE --include='*' --exclude-dir='.git' --exclude='*.example' \
+  --exclude-dir='build' --exclude-dir='.dart_tool' --exclude-dir='.swiftpm' \
+  --exclude-dir='Pods' --exclude-dir='SourcePackages' --exclude-dir='DerivedData' \
   --exclude='*.lock' --exclude='check-ai-consistency.sh' \
   "${SECRET_RE}" . || true)"
 if [[ -z "${HITS}" ]]; then

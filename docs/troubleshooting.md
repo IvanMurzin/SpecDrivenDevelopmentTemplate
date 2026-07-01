@@ -9,7 +9,7 @@ you trip over new ones — keep them factual and short.
 `AppConfig._fromEnvironment` failed validation. Make sure you copied
 `.config.dev.json.example` to `.config.dev.json` (and `.prod.json`)
 and that they contain non-empty `ENV`, `FLAVOR`, `SUPABASE_URL`,
-`SUPABASE_ANON_KEY`. Run with `--dart-define-from-file=../.config.dev.json`.
+`SUPABASE_PUBLISHABLE_KEY`. Run with `--dart-define-from-file=../.config.dev.json`.
 
 ### `dart run build_runner build` fails with `*.freezed.dart` not found
 Generated files don't exist yet. Run
@@ -24,7 +24,7 @@ On some machines AOT compilation of builder scripts fails. Re-run with
 ### `flutter run` works but the app shows the splash forever
 The router is waiting for `AuthCubit` to emit a non-`initial` state.
 Check `SupabaseInitializer.init()` ran (visible in logs) and that
-the Supabase URL / anon key resolve to a project that exists. The
+the Supabase URL / publishable key resolve to a project that exists. The
 session stream emits `null` for unauthenticated; `initial` only
 appears before the very first `bootstrap()` tick.
 

@@ -24,7 +24,7 @@ final class AppConfig {
     required this.env,
     required this.flavor,
     required this.supabaseUrl,
-    required this.supabaseAnonKey,
+    required this.supabasePublishableKey,
     required this.oauthRedirectUri,
     required this.isOtpEnabled,
     required this.enableFirebase,
@@ -35,7 +35,12 @@ final class AppConfig {
 
   static AppConfig? _instance;
 
-  static const _requiredKeys = <String>['ENV', 'FLAVOR', 'SUPABASE_URL', 'SUPABASE_ANON_KEY'];
+  static const _requiredKeys = <String>[
+    'ENV',
+    'FLAVOR',
+    'SUPABASE_URL',
+    'SUPABASE_PUBLISHABLE_KEY',
+  ];
 
   static AppConfig get instance {
     final config = _instance;
@@ -48,7 +53,7 @@ final class AppConfig {
   final String env;
   final AppFlavor flavor;
   final String supabaseUrl;
-  final String supabaseAnonKey;
+  final String supabasePublishableKey;
 
   /// Deep-link URL Supabase Auth redirects to after OAuth / magic-link.
   /// Empty string means OAuth is not configured — only email/password sign-in
@@ -86,7 +91,10 @@ final class AppConfig {
       'ENV': const String.fromEnvironment('ENV'),
       'FLAVOR': const String.fromEnvironment('FLAVOR'),
       'SUPABASE_URL': const String.fromEnvironment('SUPABASE_URL'),
-      'SUPABASE_ANON_KEY': const String.fromEnvironment('SUPABASE_ANON_KEY'),
+      'SUPABASE_PUBLISHABLE_KEY': const String.fromEnvironment('SUPABASE_PUBLISHABLE_KEY'),
+      'REVENUECAT_API_KEY_ANDROID': const String.fromEnvironment('REVENUECAT_API_KEY_ANDROID'),
+      'REVENUECAT_API_KEY_IOS': const String.fromEnvironment('REVENUECAT_API_KEY_IOS'),
+      'REVENUECAT_API_KEY_TEST': const String.fromEnvironment('REVENUECAT_API_KEY_TEST'),
     };
     final missing = _requiredKeys
         .where((k) => (values[k] ?? '').trim().isEmpty)
@@ -97,17 +105,32 @@ final class AppConfig {
         'Provide them via --dart-define-from-file=../.config.<flavor>.json.',
       );
     }
+    final flavor = AppFlavor.fromString(values['FLAVOR']!);
     return AppConfig._(
       env: values['ENV']!,
-      flavor: AppFlavor.fromString(values['FLAVOR']!),
+      flavor: flavor,
       supabaseUrl: values['SUPABASE_URL']!,
-      supabaseAnonKey: values['SUPABASE_ANON_KEY']!,
+      supabasePublishableKey: values['SUPABASE_PUBLISHABLE_KEY']!,
       oauthRedirectUri: const String.fromEnvironment('OAUTH_REDIRECT_URI'),
       isOtpEnabled: const bool.fromEnvironment('IS_OTP_ENABLED'),
       enableFirebase: const bool.fromEnvironment('ENABLE_FIREBASE'),
       enableRevenueCat: const bool.fromEnvironment('ENABLE_REVENUECAT'),
-      revenueCatApiKey: const String.fromEnvironment('REVENUECAT_API_KEY'),
+      revenueCatApiKey: _resolveRevenueCatApiKey(flavor, values),
       logApiResponses: const bool.fromEnvironment('LOG_API_RESPONSES'),
     );
+  }
+
+  static String _resolveRevenueCatApiKey(AppFlavor flavor, Map<String, String> values) {
+    final testKey = values['REVENUECAT_API_KEY_TEST']?.trim() ?? '';
+    final androidKey = values['REVENUECAT_API_KEY_ANDROID']?.trim() ?? '';
+    final iosKey = values['REVENUECAT_API_KEY_IOS']?.trim() ?? '';
+    if (flavor == AppFlavor.dev) {
+      return testKey;
+    }
+    return switch (defaultTargetPlatform) {
+      TargetPlatform.android => androidKey,
+      TargetPlatform.iOS => iosKey,
+      _ => '',
+    };
   }
 }

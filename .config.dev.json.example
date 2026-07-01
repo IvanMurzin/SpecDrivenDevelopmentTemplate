@@ -2,11 +2,13 @@
   "ENV": "dev",
   "FLAVOR": "dev",
   "SUPABASE_URL": "https://YOUR_PROJECT_REF.supabase.co",
-  "SUPABASE_ANON_KEY": "YOUR_SUPABASE_ANON_KEY",
+  "SUPABASE_PUBLISHABLE_KEY": "YOUR_SUPABASE_PUBLISHABLE_KEY",
   "OAUTH_REDIRECT_URI": "",
   "IS_OTP_ENABLED": false,
   "ENABLE_FIREBASE": false,
   "ENABLE_REVENUECAT": false,
-  "REVENUECAT_API_KEY": "rcat_placeholder_dev",
+  "REVENUECAT_API_KEY_TEST": "rcat_placeholder_test",
+  "REVENUECAT_API_KEY_ANDROID": "rcat_placeholder_android",
+  "REVENUECAT_API_KEY_IOS": "rcat_placeholder_ios",
   "LOG_API_RESPONSES": true
 }

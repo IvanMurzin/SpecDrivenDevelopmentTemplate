@@ -36,9 +36,9 @@ After `bootstrap.sh`:
 1. Decide whether you need OTP (`IS_OTP_ENABLED=true`) and OAuth
    (`OAUTH_REDIRECT_URI=myapp://login-callback/`). Set in both
    `.config.dev.json` and `.config.prod.json`.
-2. If you enable subscriptions, fill the four backend secrets
+2. If you enable subscriptions, fill the backend secrets
    (`REVENUECAT_API_KEY`, `REVENUECAT_WEBHOOK_SECRET`,
-   `REVENUECAT_PRO_ENTITLEMENT`, plus the client SDK key in the
+   `REVENUECAT_PRO_ENTITLEMENT`, plus the client SDK keys in the
    client config) and deploy via
    `backend/scripts/deploy_supabase.sh`.
 3. Run the migrations: `supabase --workdir backend db push`.
